@@ -177,4 +177,18 @@ void manual_control()
     SwitchState_4 = LOW;
     Serial.println("Switch-4 off");
   }
+    if (digitalRead(SwitchPin5) == LOW && SwitchState_5 == LOW) {
+    digitalWrite(RelayPin5, LOW);
+    Blynk.virtualWrite(VPIN_BUTTON_5, HIGH);
+    toggleState_5 = HIGH;
+    SwitchState_5 = HIGH;
+    Serial.println("Switch-5 on");
+  }
+  if (digitalRead(SwitchPin5) == HIGH && SwitchState_5 == HIGH) {
+    digitalWrite(RelayPin5, HIGH);
+    Blynk.virtualWrite(VPIN_BUTTON_5, LOW);
+    toggleState_5 = LOW;
+    SwitchState_5 = LOW;
+    Serial.println("Switch-5 off");
+  }
 }
